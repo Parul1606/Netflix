@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -24,10 +28,18 @@ a:hover {
 
 body {
   margin: 0;
+  width: 100%; /* Ensure full width */
+  height: 100%; /* Ensure full height */
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column; /* Stack elements vertically */
+}
+
+.Header{
+  z-index: 20;
+}
+
+img{
+  z-index: 10;
 }
 
 h1 {
