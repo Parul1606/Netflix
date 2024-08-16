@@ -2,6 +2,7 @@
   "name": "netflix",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "type": "module",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
@@ -19,5 +19,12 @@
     "mongoose": "^8.5.3",
     "nodemon": "^3.1.4",
     "update": "^0.4.2"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.25.1",
+    "@eslint/js": "^9.9.0",
+    "eslint": "^9.9.0",
+    "eslint-plugin-react": "^7.35.0",
+    "globals": "^15.9.0"
   }
 }
