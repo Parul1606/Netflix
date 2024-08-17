@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 //step 1: create a server when we setup a backend
 //const express = require('express') // this is required when we are not importing/exporting the components/modules 
 import express from 'express' //as we are not using the above syntax to import, we will be using this one
