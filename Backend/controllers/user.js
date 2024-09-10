@@ -34,7 +34,8 @@ export const Login = async(req,res)=>{
 
         const token = await jwt.sign(tokenData, 'gerjefvejhguimyohire', {expiresIn: '1h'});
         return res.status(200).cookie('token', token, {httponly:true}).json({
-            message: `Welcome back! ${user.fullName}`,
+            message: `Welcome back ${user.fullName}!`,
+            user,
             success: true
         })
     } catch(error){
@@ -75,7 +76,8 @@ export const Register = async(req, res) => {
         })
 
         return res.status(201).json({
-            message: 'Account created successfully.'
+            message: 'Account created successfully.',
+            success: true
         })
     } catch (error){
         console.log(error)

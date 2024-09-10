@@ -1,19 +1,79 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import Header from './Header'
+import axios from 'axios'
+import { API_END_POINT } from '../utils/constant'
+import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { setLoading, setUser } from '../redux/userSlice'
+
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true)
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+
+  const isLoading = useSelector(store=>store.app.isLoading)
 
   const loginHandler = () => {
     setIsLogin(!isLogin)
   }
 
-  const getInputData = (e) => {
-    e.preventDefault()
-    console.log(fullName, email, password)
+  const getInputData = async (e) => {
+    e.preventDefault();
+    dispatch(setLoading(true));
+
+    if(isLogin){
+      //login 
+      const user = {email, password}
+      console.log(user);
+      
+      try{
+        const res = await axios.post(`${API_END_POINT}/login`, user,{
+          headers:{
+            "Content-Type": 'application/json'
+          },
+          withCredentials: true
+        })
+        console.log(res);      
+        if(res.data.success){
+          toast.success(res.data.message)
+        }  
+        dispatch(setUser(res.data.user))
+        navigate('/browse')
+      } catch (error){
+        toast.error(error.response.data.message)
+        console.log(error);        
+      } finally {
+        dispatch(setLoading(false));
+      }
+    } else {
+      //register
+      dispatch(setLoading(true));
+      const user = {fullName, email, password}
+      try{
+        const res = await axios.post(`${API_END_POINT}/register`, user,{
+          headers:{
+            "Content-Type": 'application/json'
+          },
+          withCredentials: true
+        })
+        console.log(res)
+        if(res.data.success){
+          toast.success(res.data.message)
+        }
+        setIsLogin(true)
+      } catch (error){
+        toast.error(error.response.data.message)
+        console.log(error)
+      } finally {
+        dispatch(setLoading(false))
+      }
+    }
     setFullName('')
     setEmail('')
     setPassword('')
@@ -60,7 +120,7 @@ const Login = () => {
             />
           </div>
           <div className='flex justify-center mt-6'>
-            <button className='bg-red-500 px-4 py-3 text-white font-poppins'> {isLogin ? "Login" : "Signup" } </button>
+            <button className='bg-red-500 px-4 py-3 text-white font-poppins'> {`${isLoading ? 'Loading...' : (isLogin ? "Login" : "Signup")}` } </button>
           </div>
           <p className='text-white font-poppins mt-6 ml-4 md-1 text-center text-xl font-bold'>{isLogin ? "New to Binge?" : "Already have an account?"} <span onClick={loginHandler}  className='ml-1 text-blue-400 font-poppins font-medium cursor-pointer'>{ isLogin ? "Signup" : "Login" }</span> </p>
 
