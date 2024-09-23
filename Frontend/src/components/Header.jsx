@@ -7,10 +7,12 @@ import { API_END_POINT } from "../utils/constant";
 import { setUser } from '../redux/userSlice'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import { setToggle } from "../redux/movieSlice";
 
 
 const Header = () => {
   const user = useSelector((store) => store.app.user);
+  const toggle = useSelector(store=>store.movie.toggle);
   const dispatch = useDispatch();
   const navigate  = useNavigate()
 
@@ -29,6 +31,10 @@ const Header = () => {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const toggleHandler = () => {
+    dispatch(setToggle());
   }
 
   return (
@@ -61,8 +67,8 @@ const Header = () => {
             <button onClick = {logoutHandler} className="font-poppins bg-red-800 text-white px-2 py-2 rounded">
               Logout
             </button>
-            <button className="font-poppins bg-red-800 text-white px-2 py-2 rounded">
-              Search Movies
+            <button onClick = {toggleHandler } className="font-poppins bg-red-800 text-white px-2 py-2 rounded">
+              {toggle ? "Home" : "Search Movie"}
             </button>
           </div>
         </div>
