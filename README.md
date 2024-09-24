@@ -1,7 +1,7 @@
 # Netflix
 
 ## Project Overview
-This project is a full-stack Netflix Clone built using modern web technologies. It provides users with the ability to browse movies, view personalized recommendations, and enjoy seamless video playback. The backend is powered by Express.js and MongoDB, while the frontend is built with React, Redux, Tailwind CSS, and Material UI for a highly responsive and intuitive user interface.
+This project is a full-stack Netflix Clone built using modern web technologies. It provides users with the ability to browse movies, and enjoy seamless video playback. The backend is powered by Express.js and MongoDB, while the frontend is built with React, Redux, Tailwind CSS, and Material UI for a highly responsive and intuitive user interface.
 
 ## Features
 - **User Profiles with Search Functionality**: Users can create and manage their profiles, and utilize the search feature to find movies.
@@ -70,7 +70,3 @@ To run this project locally, follow these steps:
 ## Contributing
 Contributions are welcome! If you'd like to improve this project, please fork the repository and create a pull request.
 
-
----
-
-This version includes the correct Vite commands for running the frontend.
