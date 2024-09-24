@@ -4,6 +4,7 @@ import React from 'react';
 import './index.css';
 import Body from './components/Body';
 import { Toaster } from 'react-hot-toast' 
+import MovieDialog from './components/MovieDialog';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <div>
       <Body/>
       <Toaster />
+      <MovieDialog />
     </div>
   );
 }
