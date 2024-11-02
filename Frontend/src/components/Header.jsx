@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { User } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,12 +11,10 @@ import { setToggle } from "../redux/movieSlice";
 
 const Header = () => {
   const user = useSelector((store) => store.app.user);
-  const toggle = useSelector(store=>store.movie.toggle);
+  const toggle = useSelector(store => store.movie.toggle);
   const dispatch = useDispatch();
   const navigate  = useNavigate()
 
-
-  console.log(user);
   const [showModal, setShowModal] = useState(false);
 
   const logoutHandler = async () => {
@@ -64,10 +61,10 @@ const Header = () => {
             )}
           </div>
           <div className="ml-4 flex space-x-2">
-            <button onClick = {logoutHandler} className="font-poppins bg-red-800 text-white px-2 py-2 rounded">
+            <button onClick = {logoutHandler} className="font-poppins bg-red-800 text-white px-4 py-2 rounded-full">
               Logout
             </button>
-            <button onClick = {toggleHandler } className="font-poppins bg-red-800 text-white px-2 py-2 rounded">
+            <button onClick = {toggleHandler } className="font-poppins bg-red-800 text-white px-4 py-2 ml-2 rounded-full">
               {toggle ? "Home" : "Search Movie"}
             </button>
           </div>

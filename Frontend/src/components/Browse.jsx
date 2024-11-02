@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import Header from "./Header";
 import { useSelector } from "react-redux";
@@ -16,7 +15,7 @@ const Browse = () => {
   const toggle = useSelector(store => store.movie.toggle);
   const navigate = useNavigate();
 
-  //custom hooks
+  //my custom hooks
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();

@@ -5,12 +5,12 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { setOpen } from '../redux/movieSlice';
 import VideoBackground from './VideoBackground';
 
-export default function MovieDialog() {
-  const {open,id} = useSelector(store=>store.movie);
+export default function MovieDialog() { 
+  const { open, id } = useSelector(store => store.movie);
   const dispatch = useDispatch();
 
   const handleClose = () => {
@@ -19,20 +19,19 @@ export default function MovieDialog() {
 
   return (
     <React.Fragment>
-      
       <Dialog
         open={open}
         aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        aria-describedby="alert-dialog-description" 
       >
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <VideoBackground movieId={id} bool={true} />
-            </DialogContentText>
+            {/* Convert id to number before passing it to VideoBackground */}
+            <VideoBackground movieId={Number(id)} bool={true} />
+          </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Close</Button>
-          
+          <Button onClick={handleClose}>Cancel</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
